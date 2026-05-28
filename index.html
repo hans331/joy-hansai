@@ -597,6 +597,132 @@
     letter-spacing: 0.05em;
   }
 
+  /* Appendix · AI vibe coding workflow */
+  .slide.appendix {
+    background: #f4f7f3;
+    justify-content: flex-start;
+    padding-top: 6vh;
+  }
+  .appendix-title {
+    font-size: clamp(28px, 3.2vw, 56px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 1vh;
+  }
+  .appendix-sub {
+    font-size: clamp(15px, 1.5vw, 24px);
+    color: var(--muted);
+    margin-bottom: 4vh;
+    font-weight: 500;
+    text-align: center;
+  }
+  .flow-row {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: clamp(4px, 0.6vw, 10px);
+    width: 100%;
+    max-width: 1500px;
+  }
+  .flow-node {
+    flex: 1;
+    background: var(--card);
+    border: 2.5px solid var(--ink);
+    border-radius: 14px;
+    padding: clamp(12px, 1.4vw, 22px) clamp(8px, 1vw, 16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5vh;
+    text-align: center;
+    max-width: 180px;
+    min-width: 0;
+  }
+  .flow-node.vscode  { border-left: 8px solid #007ACC; }
+  .flow-node.github  { border-left: 8px solid #181717; }
+  .flow-node.supabase { border-left: 8px solid #3FCF8E; }
+  .flow-node.vercel  { border-left: 8px solid #000; }
+  .flow-node.accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .flow-node .ico {
+    font-size: clamp(30px, 3.4vw, 52px);
+    line-height: 1;
+  }
+  .flow-node .nm {
+    font-size: clamp(14px, 1.5vw, 22px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .flow-node.accent .nm { color: #fff; }
+  .flow-node .desc {
+    font-size: clamp(11px, 1.05vw, 15px);
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .flow-node.accent .desc { color: #ffe4cf; }
+  .flow-node .desc code,
+  .flow-bridge code {
+    background: rgba(0,0,0,0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.92em;
+    color: var(--ink);
+  }
+  .flow-node.accent .desc code {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+  }
+  .arrow {
+    display: flex;
+    align-items: center;
+    font-size: clamp(18px, 2.2vw, 32px);
+    color: #8a7f6f;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .flow-bridge {
+    margin: clamp(14px, 1.6vw, 24px) 0;
+    font-size: clamp(13px, 1.4vw, 20px);
+    color: var(--accent);
+    font-weight: 800;
+    background: #fff;
+    border: 2px dashed var(--accent);
+    border-radius: 100px;
+    padding: clamp(6px, 0.8vw, 12px) clamp(16px, 1.8vw, 28px);
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .flow-bridge code {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 2px 10px;
+    border-radius: 6px;
+  }
+  .appendix-hint {
+    margin-top: 4vh;
+    font-size: clamp(16px, 1.8vw, 28px);
+    color: var(--ink);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
+    max-width: 1200px;
+  }
+  .appendix-hint b { color: var(--accent); }
+  @media (max-width: 900px) {
+    .flow-row { flex-wrap: wrap; gap: 10px; }
+    .flow-node { flex-basis: 100px; }
+  }
+
   /* Progress bar */
   .progress {
     position: absolute;
@@ -1171,6 +1297,78 @@
     <h1>무엇이든<br>편하게 물어주세요<span class="accent">.</span></h1>
     <div class="sub" style="margin-top: 5vh;">💬 비판도, 반대 의견도 — 모두 환영합니다</div>
     <div class="tagline">대표가 못한 말, 못 들은 말 — 오늘 다 풀어가도 좋습니다</div>
+  </section>
+
+  <!-- 부록 · AI 바이브 코딩 워크플로우 -->
+  <section class="slide appendix">
+    <div class="eyebrow">🛠️ 부록 · 추가 자료</div>
+    <h2 class="appendix-title">제가 AI로 개발하는 방식</h2>
+    <div class="appendix-sub">초보자도 한 장에 — 따라할 수 있는 흐름</div>
+
+    <!-- Row 1: Local creation -->
+    <div class="flow-row">
+      <div class="flow-node">
+        <div class="ico">👤</div>
+        <div class="nm">나</div>
+        <div class="desc">"이런 거 만들어줘"</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="flow-node vscode">
+        <div class="ico">💻</div>
+        <div class="nm">VS Code</div>
+        <div class="desc">에디터</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="flow-node">
+        <div class="ico">⌨️</div>
+        <div class="nm">Terminal</div>
+        <div class="desc">VS Code 내장</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="flow-node accent">
+        <div class="ico">🤖</div>
+        <div class="nm">Claude Code</div>
+        <div class="desc"><code>npm install -g</code></div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="flow-node">
+        <div class="ico">📁</div>
+        <div class="nm">내 폴더</div>
+        <div class="desc">🌿 Git 포함</div>
+      </div>
+    </div>
+
+    <!-- Bridge -->
+    <div class="flow-bridge">⬇ <code>git push</code></div>
+
+    <!-- Row 2: Cloud pipeline -->
+    <div class="flow-row">
+      <div class="flow-node github">
+        <div class="ico">🐙</div>
+        <div class="nm">GitHub</div>
+        <div class="desc">코드 저장소</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="flow-node supabase">
+        <div class="ico">🗄️</div>
+        <div class="nm">Supabase</div>
+        <div class="desc">DB 연결</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="flow-node vercel">
+        <div class="ico">▲</div>
+        <div class="nm">Vercel</div>
+        <div class="desc">자동 배포</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="flow-node accent">
+        <div class="ico">🌐</div>
+        <div class="nm">실제 웹</div>
+        <div class="desc">예: joy.hansai.kr</div>
+      </div>
+    </div>
+
+    <div class="appendix-hint">💡 중요한 건 코딩 능력이 아니라 — <b>무엇을 만들지 명확하게 말하는 능력</b></div>
   </section>
 
 </div>
