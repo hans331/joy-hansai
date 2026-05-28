@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>사업의 즐거움 — 북토크</title>
+<meta name="description" content="최철용 저 『사업의 즐거움』 핵심 키워드 북토크 슬라이드" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf7f2;
+    --ink: #1a1a1a;
+    --muted: #8a7f6f;
+    --accent: #c8501e;     /* 1부 — 따뜻한 오렌지 (온라인 쇼핑몰) */
+    --accent-2: #2d7a8c;   /* 2부 — 차분한 틸 (사업 이야기) */
+    --accent-3: #6a8f3e;   /* 결론 — 초록 (즐거움) */
+    --gold: #f59e0b;
+    --card: #ffffff;
+    --line: #e6dfd2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  body { overflow: hidden; }
+  .deck {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+  .slide {
+    flex: 0 0 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6vh 8vw;
+    position: relative;
+  }
+  .eyebrow {
+    font-size: clamp(18px, 1.8vw, 28px);
+    color: var(--muted);
+    letter-spacing: 0.3em;
+    margin-bottom: 2.5vh;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .qnum {
+    font-size: clamp(56px, 7vw, 120px);
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 2.5vh;
+  }
+  .question {
+    font-size: clamp(22px, 2.2vw, 38px);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    max-width: 1200px;
+    margin-bottom: 5vh;
+    color: var(--ink);
+  }
+  .question .em {
+    background: linear-gradient(transparent 60%, #ffe4b8 60%);
+    padding: 0 4px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(12px, 1.4vw, 24px);
+    max-width: 1400px;
+  }
+  .tag {
+    font-size: clamp(26px, 3.2vw, 56px);
+    font-weight: 700;
+    padding: clamp(14px, 1.6vw, 26px) clamp(24px, 2.4vw, 44px);
+    background: var(--card);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .tag.big {
+    font-size: clamp(36px, 4.5vw, 80px);
+    border-width: 4px;
+  }
+  .tag.solid {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .tag.dark {
+    background: var(--ink);
+    color: #faf7f2;
+    border-color: var(--ink);
+  }
+  .pageno {
+    position: absolute;
+    bottom: 4vh;
+    right: 5vw;
+    font-size: 16px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .hint {
+    position: absolute;
+    bottom: 4vh;
+    left: 5vw;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .author {
+    position: absolute;
+    top: 4vh;
+    right: 5vw;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* Title slides — Sage Mint */
+  .slide.title {
+    background: #d1fae5;
+    color: #065f46;
+  }
+  .slide.title .eyebrow { color: #047857; }
+  .slide.title h1 {
+    font-size: clamp(56px, 8vw, 140px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    text-align: center;
+    color: #065f46;
+  }
+  .slide.title h1 .accent { color: var(--gold); }
+  .slide.title .sub {
+    font-size: clamp(20px, 2.2vw, 36px);
+    color: #047857;
+    font-weight: 500;
+    margin-top: 4vh;
+  }
+  .slide.title .tagline {
+    font-size: clamp(16px, 1.6vw, 26px);
+    color: #047857;
+    font-weight: 500;
+    margin-top: 2vh;
+    letter-spacing: -0.01em;
+  }
+  .slide.title .pageno,
+  .slide.title .hint,
+  .slide.title .author { color: #6b9080; }
+
+  /* Section dividers */
+  .slide.section {
+    background: #f4ede0;
+    justify-content: flex-start;
+    padding-top: calc(12vh + 46px);
+  }
+  .slide.section .chapter {
+    font-size: clamp(72px, 11vw, 200px);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+    color: var(--ink);
+    text-align: center;
+  }
+  .slide.section .chapter .accent { color: var(--accent); }
+  .slide.section .meta {
+    font-size: clamp(20px, 2vw, 32px);
+    color: var(--muted);
+    font-weight: 600;
+    margin-top: 3vh;
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+  .slide.section.chapter-biz { background: #eef4f6; }
+  .slide.section.chapter-biz .chapter .accent { color: var(--accent-2); }
+  .slide.section.chapter-conclusion { background: #ecf4e3; }
+  .slide.section.chapter-conclusion .chapter .accent { color: var(--accent-3); }
+
+  /* Q&A slide variants */
+  .slide.q-shop,
+  .slide.q-biz,
+  .slide.q-final {
+    justify-content: flex-start;
+    padding-top: 10vh;
+  }
+  .slide.q-shop { background: #f4ede0; }
+  .slide.q-biz { background: #eef4f6; }
+  .slide.q-biz .qnum { color: var(--accent-2); }
+  .slide.q-biz .tag.solid { background: var(--accent-2); border-color: var(--accent-2); }
+  .slide.q-final { background: #ecf4e3; }
+  .slide.q-final .qnum { color: var(--accent-3); }
+  .slide.q-final .tag.solid { background: var(--accent-3); border-color: var(--accent-3); }
+
+  /* Quote slide */
+  .quote {
+    font-size: clamp(28px, 3.4vw, 60px);
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -0.03em;
+    line-height: 1.35;
+    max-width: 1200px;
+    color: var(--ink);
+  }
+  .quote .accent { color: var(--accent); }
+  .slide.q-biz .quote .accent { color: var(--accent-2); }
+  .slide.q-final .quote .accent { color: var(--accent-3); }
+  .quote-sub {
+    font-size: clamp(18px, 1.8vw, 28px);
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 3vh;
+    letter-spacing: -0.01em;
+  }
+
+  /* VS layout */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: clamp(20px, 3vw, 60px);
+    max-width: 1400px;
+    width: 100%;
+  }
+  .vs-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vh;
+    padding: clamp(20px, 2.5vw, 40px);
+    background: var(--card);
+    border: 3px solid var(--ink);
+    border-radius: 28px;
+  }
+  .vs-side .ico {
+    font-size: clamp(48px, 5.5vw, 88px);
+    line-height: 1;
+  }
+  .vs-side .title-tx {
+    font-size: clamp(24px, 2.8vw, 44px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-align: center;
+  }
+  .vs-side .sub-tx {
+    font-size: clamp(16px, 1.6vw, 24px);
+    color: var(--muted);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .vs-mid {
+    font-size: clamp(28px, 3.5vw, 60px);
+    font-weight: 900;
+    color: var(--muted);
+    letter-spacing: -0.02em;
+  }
+  .vs-side.dark {
+    background: var(--ink);
+    color: #faf7f2;
+    border-color: var(--ink);
+  }
+  .vs-side.dark .sub-tx { color: #b8aa92; }
+  .vs-side.accent {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .vs-side.accent .sub-tx { color: #ffe4cf; }
+  .slide.q-biz .vs-side.accent { background: var(--accent-2); border-color: var(--accent-2); }
+  .slide.q-biz .vs-side.accent .sub-tx { color: #cfe2e8; }
+
+  /* Numbers / formula */
+  .formula {
+    font-size: clamp(28px, 3.6vw, 64px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-align: center;
+    line-height: 1.3;
+    background: var(--card);
+    border: 3px solid var(--ink);
+    border-radius: 24px;
+    padding: clamp(24px, 3vw, 50px) clamp(30px, 4vw, 70px);
+    max-width: 1100px;
+  }
+  .formula .op { color: var(--muted); margin: 0 0.4em; }
+  .formula .em { color: var(--accent); }
+  .slide.q-biz .formula .em { color: var(--accent-2); }
+  .slide.q-final .formula .em { color: var(--accent-3); }
+
+  /* Three-grid */
+  .triad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(14px, 1.6vw, 28px);
+    max-width: 1400px;
+    width: 100%;
+  }
+  .triad .item {
+    background: var(--card);
+    border: 3px solid var(--ink);
+    border-radius: 22px;
+    padding: clamp(20px, 2.2vw, 36px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2vh;
+    text-align: center;
+  }
+  .triad .item .ico {
+    font-size: clamp(40px, 4.5vw, 72px);
+    line-height: 1;
+  }
+  .triad .item .nm {
+    font-size: clamp(22px, 2.4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .triad .item .desc {
+    font-size: clamp(14px, 1.4vw, 22px);
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .triad .item.highlight {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .triad .item.highlight .desc { color: #ffe4cf; }
+  .slide.q-biz .triad .item.highlight { background: var(--accent-2); border-color: var(--accent-2); }
+  .slide.q-biz .triad .item.highlight .desc { color: #cfe2e8; }
+
+  /* Stats row */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(14px, 2vw, 36px);
+    max-width: 1400px;
+    width: 100%;
+  }
+  .stat {
+    background: var(--card);
+    border: 3px solid var(--ink);
+    border-radius: 22px;
+    padding: clamp(24px, 2.8vw, 44px) clamp(20px, 2.2vw, 36px);
+    text-align: center;
+  }
+  .stat .pct {
+    font-size: clamp(48px, 6vw, 110px);
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .slide.q-biz .stat .pct { color: var(--accent-2); }
+  .stat .lbl {
+    font-size: clamp(16px, 1.8vw, 28px);
+    font-weight: 700;
+    margin-top: 1.5vh;
+    letter-spacing: -0.02em;
+  }
+  .stat .sub {
+    font-size: clamp(13px, 1.3vw, 20px);
+    color: var(--muted);
+    margin-top: 0.8vh;
+    line-height: 1.4;
+  }
+
+  /* Final pillars */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(14px, 1.6vw, 28px);
+    max-width: 1500px;
+    width: 100%;
+  }
+  .pillar {
+    background: var(--card);
+    border: 3px solid var(--accent-3);
+    border-radius: 22px;
+    padding: clamp(20px, 2.4vw, 38px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+    text-align: center;
+  }
+  .pillar .ico {
+    font-size: clamp(40px, 4.8vw, 76px);
+    line-height: 1;
+  }
+  .pillar .nm {
+    font-size: clamp(20px, 2.4vw, 40px);
+    font-weight: 900;
+    color: var(--accent-3);
+    letter-spacing: -0.03em;
+  }
+  .pillar .desc {
+    font-size: clamp(13px, 1.4vw, 22px);
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  /* Progress bar */
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(0,0,0,0.06);
+    z-index: 100;
+  }
+  .progress-bar {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  @media (max-width: 800px) {
+    .triad, .pillars, .stats { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-bar" id="pbar"></div></div>
+
+<div class="deck" id="deck">
+
+  <!-- 0. Title -->
+  <section class="slide title">
+    <div class="eyebrow">📕 BOOK TALK · 2026</div>
+    <h1>사업의<br>즐거움<span class="accent">.</span></h1>
+    <div class="sub">최철용 — 20년의 기록</div>
+    <div class="tagline">온라인 쇼핑몰 그리고 사업 — 험난한 여정을 어떻게 즐겁게 헤쳐 나갈 것인가</div>
+    <div class="hint">→ 키 또는 화면 클릭으로 넘기세요</div>
+  </section>
+
+  <!-- 1. Intro · 책의 구조 -->
+  <section class="slide title">
+    <div class="eyebrow">📖 책의 구조</div>
+    <h1 style="font-size: clamp(40px, 6vw, 100px);">두 권의 책,<br>한 권에 담다<span class="accent">.</span></h1>
+    <div class="sub" style="margin-top: 5vh; display: flex; gap: 3vw; flex-wrap: wrap; justify-content: center;">
+      <span>🛒 <b>1부</b> · 온라인 쇼핑몰 이야기</span>
+      <span>🏛️ <b>2부</b> · 사업 이야기</span>
+    </div>
+    <div class="tagline" style="margin-top: 4vh;">광고 · 쿠팡 · 네이버 — 그리고 — 조직 · 학습 · 비전 · 가치관</div>
+  </section>
+
+  <!-- ============ CHAPTER 1 ============ -->
+  <section class="slide section">
+    <div class="eyebrow">📖 CHAPTER 1</div>
+    <h2 class="chapter">온라인 쇼핑몰<span class="accent">.</span></h2>
+    <div class="meta">유출된 답안지 · 메타 · 네이버 · 쿠팡 · 아마존</div>
+  </section>
+
+  <!-- Q1: 유출된 답안지 -->
+  <section class="slide q-shop">
+    <div class="qnum">01</div>
+    <div class="question">온라인 비즈니스는 <span class="em">오픈북 시험</span>이다.<br>그렇다면 <span class="em">답안지</span>는 어디에 있을까?</div>
+    <div class="tags">
+      <span class="tag">📝 리뷰</span>
+      <span class="tag">📔 일기장</span>
+      <span class="tag solid">📚 족보</span>
+    </div>
+    <div class="quote-sub" style="margin-top: 5vh;">리뷰는 답안지이자 고객의 일기장이다</div>
+    <div class="pageno">1 / 22</div>
+  </section>
+
+  <!-- Q2: 메타의 성과 훔치기 -->
+  <section class="slide q-shop">
+    <div class="qnum">02</div>
+    <div class="question">메타 광고 <span class="em">ROAS 800%</span>의 진실</div>
+    <div class="formula">
+      ROAS 800% <span class="op">→</span> <span class="em">550%</span> <span class="op">→</span> <span class="em">그 이하?</span>
+    </div>
+    <div class="tags" style="margin-top: 4vh;">
+      <span class="tag">🔍 기여 설정</span>
+      <span class="tag">👀 조회 후 1일</span>
+      <span class="tag solid">🦹 데이터 도둑</span>
+    </div>
+    <div class="pageno">2 / 22</div>
+  </section>
+
+  <!-- Q3: 규칙 마법사 -->
+  <section class="slide q-shop">
+    <div class="qnum">03</div>
+    <div class="question">매출 5배 키운 <span class="em">규칙 마법사</span><br>— 그 비밀, 그리고 신기루</div>
+    <div class="stats">
+      <div class="stat"><div class="pct">5×</div><div class="lbl">3일만에</div><div class="sub">규칙 마법사 = 증폭</div></div>
+      <div class="stat"><div class="pct">1년</div><div class="lbl">신기루로</div><div class="sub">애플 ATT 정책 변경</div></div>
+      <div class="stat"><div class="pct">📡</div><div class="lbl">셋방살이</div><div class="sub">메타는 자가가 없다</div></div>
+    </div>
+    <div class="pageno">3 / 22</div>
+  </section>
+
+  <!-- Q4: 네이버 vs 슬롯 -->
+  <section class="slide q-shop">
+    <div class="qnum">04</div>
+    <div class="question">네이버 <span class="em">vs</span> 슬롯<br>— 비즈니스 게임은 <span class="em">정의</span>보다 <span class="em">공정</span>이 중요하다</div>
+    <div class="tags">
+      <span class="tag">⚖️ 죄수의 딜레마</span>
+      <span class="tag">🎲 게임 이론</span>
+      <span class="tag solid">📜 함무라비 법전</span>
+    </div>
+    <div class="quote-sub" style="margin-top: 5vh;">"슬롯에는 슬롯으로 대응한다"</div>
+    <div class="pageno">4 / 22</div>
+  </section>
+
+  <!-- Q5: 보이는 손 -->
+  <section class="slide q-shop">
+    <div class="qnum">05</div>
+    <div class="question">네이버의 <span class="em">'보이는 손'</span><br>혼란의 시대, 무엇이 살아남게 하는가?</div>
+    <div class="tags">
+      <span class="tag big">🏷️ 브랜드</span>
+      <span class="tag big solid">🤝 신뢰 자본</span>
+    </div>
+    <div class="pageno">5 / 22</div>
+  </section>
+
+  <!-- Q6: 귀여운 쿠팡 -->
+  <section class="slide q-shop">
+    <div class="qnum">06</div>
+    <div class="question">귀여웠던 <span class="em">쿠팡</span>이 사자가 되기까지<br>— '쿠팡파' 리더의 변절</div>
+    <div class="formula">
+      수수료 <span class="em">10%</span> <span class="op">→</span> 30% <span class="op">→</span> 45% <span class="op">→</span> <span class="em">50%+</span>
+    </div>
+    <div class="tags" style="margin-top: 4vh;">
+      <span class="tag">🛒 Only 쿠팡</span>
+      <span class="tag solid">🛍️ One Of Them</span>
+    </div>
+    <div class="pageno">6 / 22</div>
+  </section>
+
+  <!-- Q7: 제국 vs 연합군 -->
+  <section class="slide q-shop">
+    <div class="qnum">07</div>
+    <div class="question">쿠팡 <span class="em">제국</span> vs 네이버 <span class="em">연합군</span></div>
+    <div class="vs">
+      <div class="vs-side dark">
+        <div class="ico">🏛️</div>
+        <div class="title-tx">쿠팡 = 애플</div>
+        <div class="sub-tx">단일 비전 · 통제된 수직계열화<br>"고객 만족" 단 하나</div>
+      </div>
+      <div class="vs-mid">VS</div>
+      <div class="vs-side">
+        <div class="ico">🏘️</div>
+        <div class="title-tx">네이버 = 재래시장</div>
+        <div class="sub-tx">판매자 · 네이버 · CJ<br>동상이몽 연합군</div>
+      </div>
+    </div>
+    <div class="pageno">7 / 22</div>
+  </section>
+
+  <!-- Q8: 변절자, 쉬움의 미학 -->
+  <section class="slide q-shop">
+    <div class="qnum">08</div>
+    <div class="question">예스24를 떠나 쿠팡에서 책을 산 이유<br>— <span class="em">쉽다</span>는 것의 무게</div>
+    <div class="quote">
+      <div>내가 <span class="accent">어렵게</span> 일해서</div>
+      <div style="color: var(--muted); font-weight: 600;">고객을</div>
+      <div class="accent">쉽게</div>
+      <div style="color: var(--muted); font-weight: 600;">만들 것인가?</div>
+    </div>
+    <div class="pageno">8 / 22</div>
+  </section>
+
+  <!-- Q9: 중국집과 아마존 -->
+  <section class="slide q-shop">
+    <div class="qnum">09</div>
+    <div class="question">중국집과 아마존의 공통점<br>— <span class="em">대표가 주방을 모르면 망한다</span></div>
+    <div class="formula" style="font-size: clamp(24px, 3vw, 52px);">
+      절박함 <span class="op">×</span> 2 <span class="op">+</span> 시스템 <span class="op">+</span> <span class="em">돈</span>
+    </div>
+    <div class="tags" style="margin-top: 4vh;">
+      <span class="tag">🍜 헝그리 정신</span>
+      <span class="tag solid">👨‍🍳 직접 배워라</span>
+    </div>
+    <div class="pageno">9 / 22</div>
+  </section>
+
+  <!-- ============ CHAPTER 2 ============ -->
+  <section class="slide section chapter-biz">
+    <div class="eyebrow">📖 CHAPTER 2</div>
+    <h2 class="chapter">사업<span class="accent">.</span></h2>
+    <div class="meta">팀 · 숫자 · 시간 · 인정 · 자신을 믿는 것</div>
+  </section>
+
+  <!-- Q10: 신사업, 냉정과 열정 -->
+  <section class="slide q-biz">
+    <div class="qnum">10</div>
+    <div class="question">신사업, <span class="em">냉정과 열정</span> 사이<br>— 그것을 견디게 하는 단 하나</div>
+    <div class="tags">
+      <span class="tag">💸 쓰는 재미</span>
+      <span class="tag big solid">💰 버는 재미</span>
+    </div>
+    <div class="quote-sub" style="margin-top: 5vh;">"버는 재미는 생명수다 — 다만 맛보기가 1만 배 어렵다"</div>
+    <div class="pageno">10 / 22</div>
+  </section>
+
+  <!-- Q11: 팀이 판다 -->
+  <section class="slide q-biz">
+    <div class="qnum">11</div>
+    <div class="question">팀이 판다<br>— 1인 비즈니스의 24시간 한계</div>
+    <div class="vs">
+      <div class="vs-side">
+        <div class="ico">🦸</div>
+        <div class="title-tx">어벤져스</div>
+        <div class="sub-tx">최상이지만<br>현실에선 드물다</div>
+      </div>
+      <div class="vs-mid">→</div>
+      <div class="vs-side accent">
+        <div class="ico">⚾</div>
+        <div class="title-tx">외인구단</div>
+        <div class="sub-tx">결함이 있더라도<br>마음 맞는 친구들</div>
+      </div>
+    </div>
+    <div class="pageno">11 / 22</div>
+  </section>
+
+  <!-- Q12: 숫자의 힘 -->
+  <section class="slide q-biz">
+    <div class="qnum">12</div>
+    <div class="question">숫자의 힘 — 막연함이 <span class="em">구체</span>로 바뀌는 순간</div>
+    <div class="formula">
+      <span class="em">5,000</span> <span class="op">·</span> <span class="em">50,000</span> <span class="op">·</span> <span class="em">500,000</span>
+    </div>
+    <div class="tags" style="margin-top: 4vh;">
+      <span class="tag">⭕ 어림잡기</span>
+      <span class="tag">💀 죽은 숫자</span>
+      <span class="tag solid">💫 살아있는 숫자</span>
+    </div>
+    <div class="pageno">12 / 22</div>
+  </section>
+
+  <!-- Q13: 하루 12시간 -->
+  <section class="slide q-biz">
+    <div class="qnum">13</div>
+    <div class="question">하루 <span class="em">12시간</span>을 어떻게 쓸 것인가?<br>— "어떻게 살 것인가"라는 철학</div>
+    <div class="triad">
+      <div class="item"><div class="ico">🌙</div><div class="nm">밤에</div><div class="desc">잠자리에서 "오늘 괜찮았어"</div></div>
+      <div class="item"><div class="ico">☀️</div><div class="nm">아침에</div><div class="desc">눈 뜨며 어제가 떠올라도 흐뭇하다면</div></div>
+      <div class="item highlight"><div class="ico">🎋</div><div class="nm">노년에</div><div class="desc">"그 시절 그러길 잘했다"</div></div>
+    </div>
+    <div class="pageno">13 / 22</div>
+  </section>
+
+  <!-- Q14: 환경 지배론 -->
+  <section class="slide q-biz">
+    <div class="qnum">14</div>
+    <div class="question">사옥을 산 진짜 이유<br>— 의지가 아니라 <span class="em">환경</span></div>
+    <div class="tags">
+      <span class="tag big">🐦 새소리</span>
+      <span class="tag big solid">🌳 환경 지배론</span>
+    </div>
+    <div class="quote-sub" style="margin-top: 5vh;">"의지력이 강한 사람은 의지가 강한 게 아니다. 의지력이 필요 없도록 환경을 잘 만든 사람이다."</div>
+    <div class="pageno">14 / 22</div>
+  </section>
+
+  <!-- Q15: 군복과 양복 -->
+  <section class="slide q-biz">
+    <div class="qnum">15</div>
+    <div class="question">잡플래닛의 <span class="em">군복</span>, 에어비앤비의 <span class="em">양복</span><br>— 평가는 어떻게 사람을 바꾸는가</div>
+    <div class="vs">
+      <div class="vs-side dark">
+        <div class="ico">🪖</div>
+        <div class="title-tx">군복 (익명)</div>
+        <div class="sub-tx">하향 평준화<br>일방적 분출</div>
+      </div>
+      <div class="vs-mid">⇄</div>
+      <div class="vs-side accent">
+        <div class="ico">👔</div>
+        <div class="title-tx">양복 (상호평가)</div>
+        <div class="sub-tx">자기 검열<br>품격 있는 행동</div>
+      </div>
+    </div>
+    <div class="pageno">15 / 22</div>
+  </section>
+
+  <!-- Q16: 독서경영 -->
+  <section class="slide q-biz">
+    <div class="qnum">16</div>
+    <div class="question">독서경영, 9년의 기록<br>— "한 권의 책은 한 접의 보약"</div>
+    <div class="triad">
+      <div class="item"><div class="ico">👁️</div><div class="nm">본 것</div><div class="desc">책에서 본 것</div></div>
+      <div class="item"><div class="ico">💡</div><div class="nm">깨달은 것</div><div class="desc">나만의 통찰</div></div>
+      <div class="item highlight"><div class="ico">🛠️</div><div class="nm">적용할 것</div><div class="desc">삶에 적용</div></div>
+    </div>
+    <div class="quote-sub" style="margin-top: 4vh;">2016.10.12. 『청소력』으로 시작 → 지금까지</div>
+    <div class="pageno">16 / 22</div>
+  </section>
+
+  <!-- Q17: 일잘 vs 스마트 -->
+  <section class="slide q-biz">
+    <div class="qnum">17</div>
+    <div class="question">일 잘하는 직원 vs <span class="em">스마트한</span> 직원<br>— 그리고 잠재력</div>
+    <div class="stats">
+      <div class="stat"><div class="pct">10%</div><div class="lbl">스마트</div><div class="sub">문제 제기</div></div>
+      <div class="stat"><div class="pct">20%</div><div class="lbl">일 잘함</div><div class="sub">문제 해결</div></div>
+      <div class="stat"><div class="pct">70%</div><div class="lbl">잠재력</div><div class="sub">디테일 챙기기</div></div>
+    </div>
+    <div class="pageno">17 / 22</div>
+  </section>
+
+  <!-- Q18: 대표의 공부 -->
+  <section class="slide q-biz">
+    <div class="qnum">18</div>
+    <div class="question">'어쩌다 대표'가 배워야 할 단 하나<br>— 결국 <span class="em">사람</span>이다</div>
+    <div class="tags">
+      <span class="tag">🌱 경험</span>
+      <span class="tag">👥 사람</span>
+      <span class="tag">📖 책</span>
+      <span class="tag solid">🎤 강연</span>
+    </div>
+    <div class="quote-sub" style="margin-top: 5vh;">"200만 년 패치된 코드 — 정답이 없다는 걸 인정하라"</div>
+    <div class="pageno">18 / 22</div>
+  </section>
+
+  <!-- Q19: 인정 욕구 -->
+  <section class="slide q-biz">
+    <div class="qnum">19</div>
+    <div class="question">"<span class="em">잘한다고 말해 줄래요?</span>"<br>— 인정은 어렵지만 강력하다</div>
+    <div class="quote">
+      <div>士爲<span class="accent">知己者</span>死</div>
+      <div style="color: var(--muted); font-weight: 600; margin-top: 2vh;">선비는 자신을 알아주는 사람을 위해 죽는다</div>
+    </div>
+    <div class="quote-sub" style="margin-top: 5vh;">사람은 정의에 목숨 거는 게 아니다. <b>자신을 알아주는 이</b>에게 목숨 건다.</div>
+    <div class="pageno">19 / 22</div>
+  </section>
+
+  <!-- Q20: 자신을 믿어 -->
+  <section class="slide q-biz">
+    <div class="qnum">20</div>
+    <div class="question">창업하러 떠나는 직원에게 건넨 단 한 마디</div>
+    <div class="tags">
+      <span class="tag big solid">💪 너 자신을 믿어</span>
+    </div>
+    <div class="quote-sub" style="margin-top: 5vh; max-width: 1000px;">자신을 믿는다는 건 능력을 과신하는 게 아니다.<br>어떤 어려움에도 포기하지 않겠다는 <b>나의 태도</b>를 믿는 것이다.</div>
+    <div class="pageno">20 / 22</div>
+  </section>
+
+  <!-- Q21: 무한게임 -->
+  <section class="slide q-biz">
+    <div class="qnum">21</div>
+    <div class="question">달콤한 데이트 <span class="em">vs</span> 노부부<br>— 사업은 유한 게임이 아닌 <span class="em">무한 게임</span></div>
+    <div class="vs">
+      <div class="vs-side">
+        <div class="ico">💋</div>
+        <div class="title-tx">부러운 것</div>
+        <div class="sub-tx">공상으로 끝남<br>유한 게임의 승리</div>
+      </div>
+      <div class="vs-mid">vs</div>
+      <div class="vs-side accent">
+        <div class="ico">👵🏻👴🏻</div>
+        <div class="title-tx">닮고 싶은 것</div>
+        <div class="sub-tx">실천을 근간으로<br>50년 함께 걷는 여정</div>
+      </div>
+    </div>
+    <div class="pageno">21 / 22</div>
+  </section>
+
+  <!-- Q22: 성장 = 불안 -->
+  <section class="slide q-biz">
+    <div class="qnum">22</div>
+    <div class="question">성장은 <span class="em">불안의 크기</span>만큼<br>— 평범함의 반대는 탁월함</div>
+    <div class="quote">
+      <div>"그것도 나쁘진 않지만,</div>
+      <div class="accent">나라면 더 좋은 방법을 찾을 텐데."</div>
+    </div>
+    <div class="tags" style="margin-top: 5vh;">
+      <span class="tag">🎨 메이커 vs 유저</span>
+      <span class="tag solid">⚡ Not Bad → Better</span>
+    </div>
+    <div class="pageno">22 / 22</div>
+  </section>
+
+  <!-- ============ CONCLUSION ============ -->
+  <section class="slide section chapter-conclusion">
+    <div class="eyebrow">🎯 결론</div>
+    <h2 class="chapter">사업의<br>즐거움<span class="accent">.</span></h2>
+    <div class="meta">고통에서 벗어나기 · 그리고 즐거움으로 가기</div>
+  </section>
+
+  <!-- Conclusion 1: 손익분기점 -->
+  <section class="slide q-final">
+    <div class="question" style="margin-top: 4vh;">사업이 고통인 본질적 이유</div>
+    <div class="formula" style="font-size: clamp(28px, 3.8vw, 68px);">
+      들어오는 돈 <span class="em">&gt;</span> 나가는 돈
+    </div>
+    <div class="quote-sub" style="margin-top: 5vh; max-width: 1000px;">적자는 고통의 <b>충분조건</b>이지만<br>흑자는 행복의 <b>필요조건</b>일 뿐이다.</div>
+    <div class="quote-sub" style="margin-top: 3vh;">"돈을 못 버는 건 99% 대표 탓이다"</div>
+  </section>
+
+  <!-- Conclusion 2: 4 Pillars -->
+  <section class="slide q-final">
+    <div class="question" style="margin-top: 2vh;">사업을 <span class="em">즐겁게</span> 하는 네 가지 기둥</div>
+    <div class="pillars">
+      <div class="pillar"><div class="ico">💰</div><div class="nm">흑자</div><div class="desc">고통의 터널 통과</div></div>
+      <div class="pillar"><div class="ico">🙂</div><div class="nm">태도</div><div class="desc">긍정과 호기심</div></div>
+      <div class="pillar"><div class="ico">🤝</div><div class="nm">관계</div><div class="desc">선한 동료들과 함께</div></div>
+      <div class="pillar"><div class="ico">🌟</div><div class="nm">의미</div><div class="desc">지구를 0.1% 더 낫게</div></div>
+    </div>
+  </section>
+
+  <!-- Conclusion 3: 백두산 천지 -->
+  <section class="slide q-final">
+    <div class="question" style="margin-top: 4vh;">백두산 천지에 오르는 사람들</div>
+    <div class="quote">
+      <div>우리는 <span class="accent">평범하지 않다.</span></div>
+      <div style="color: var(--muted); font-weight: 600; margin-top: 2vh; font-size: 0.7em;">산이 있으면 오르고,<br>바다가 펼쳐지면 배를 타고,<br>창공을 보면 자유롭게 날고 싶어 하는 사람들.</div>
+    </div>
+  </section>
+
+  <!-- Final: 사업의 즐거움을 누리세요 -->
+  <section class="slide title">
+    <h1>사업의 즐거움을<br>누리세요<span class="accent">.</span></h1>
+    <div class="sub" style="margin-top: 6vh;">📕 『사업의 즐거움』 · 최철용 지음</div>
+    <div class="tagline">"당신은 어떻게 생각하는가?"</div>
+  </section>
+
+  <!-- Q&A -->
+  <section class="slide title">
+    <div class="eyebrow">🙋 Q&amp;A</div>
+    <h1>무엇이든 편하게<br>물어보세요<span class="accent">.</span></h1>
+    <div class="sub">💬 솔직하게 답변해 드릴게요</div>
+  </section>
+
+</div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = document.querySelectorAll('.slide');
+  const pbar = document.getElementById('pbar');
+  let idx = 0;
+
+  function updateBar() {
+    const pct = slides.length > 1 ? (idx / (slides.length - 1)) * 100 : 100;
+    pbar.style.width = pct + '%';
+  }
+
+  function go(i) {
+    idx = Math.max(0, Math.min(slides.length - 1, i));
+    slides[idx].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+    updateBar();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(idx + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(idx - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+  });
+
+  deck.addEventListener('click', (e) => {
+    const w = window.innerWidth;
+    if (e.clientX < w * 0.2) go(idx - 1);
+    else if (e.clientX > w * 0.8) go(idx + 1);
+    else go(idx + 1);
+  });
+
+  deck.addEventListener('scroll', () => {
+    idx = Math.round(deck.scrollLeft / window.innerWidth);
+    updateBar();
+  });
+
+  updateBar();
+</script>
+
+</body>
+</html>
